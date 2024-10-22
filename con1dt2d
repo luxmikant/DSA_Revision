@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> construct2DArray(vector<int>& original, int m, int n) {
+        if(m*n != original.size()){
+            return vector<vector<int>>();
+        }
+       
+        vector<vector<int>> res(m, vector<int>(n));
+        for(int i = 0; i < original.size(); i++){
+            res[i/n][i%n] = original[i];
+        }
+        return res;
+    }
+};
+
+int main() {
+    // Create an instance of the Solution class
+    Solution solution;
+
+    // Define the original vector
+    vector<int> original = {1, 2, 3, 4, 5, 9,6};
+
+    // Define the desired dimensions of the 2D array
+    int m = 2;
+    int n = 3;
+
+    // Call the construct2DArray function and store the result
+    vector<vector<int>> result = solution.construct2DArray(original, m, n);
+
+    // Print the resulting 2D array
+    for(int i = 0; i < result.size(); i++) {
+        for(int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
